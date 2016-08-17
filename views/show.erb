@@ -1,0 +1,26 @@
+<h1>企業詳細</h1>
+<hr>
+<h2><%= @shows.name %></h2>
+<div>
+<table>
+		<tr>
+			<th>住所</th>
+			<td><%= @shows.address %></td>
+		</tr>
+		<tr>
+			<th>TEL</th>
+			<td><%= @shows.connum %></td>
+		</tr>
+		<tr>
+			<th>Mail</th>
+			<td><a href="mailto:<%= @shows.mail %>"><%= @shows.mail %></a></td>
+		</tr>
+		<tr>
+			<th>URL</th>
+			<td><a href="<%= @shows.site_url %>" target="_blank"><%= @shows.site_url %></a></td>
+		</tr>
+</table>
+</div>
+<div align="center">
+	<a href="/salescrawler">HOME</a>
+</div>

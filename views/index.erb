@@ -1,0 +1,103 @@
+<h1><a href="http://tenshoku.mynavi.jp/" target="_blank"><img src="/img/MyNavi2.gif" width="20%" height="20%"></a></h1>
+
+<div id="extra2" >
+	<ul>
+		<form method="post" action="/url_add">
+			<p>■URL　
+				<input name="url_add" type="text" size="70" placeholder="サイトURL">
+				<input type="submit" value="登録" >
+			</p>
+		</form>
+	</ul>
+	<ul>
+		<form id="extra" method="post" action="/designation">
+			<p>■登録中URL　
+				<a href="<%= @urllists %>" target="_blank"><%= @urllists %></a>
+				<input type="submit" value="抽出" onclick="extraWait()">
+			</p>
+		</form>
+	</ul>
+</div>
+<hr>
+
+<div id="extra3">
+<p style="font-size: 18px; margin-left: 20px">【企業一覧】</p>
+<table>
+	<% @companies.each do |company| %>
+	<tr data-id="<%= company.id %>">
+		<td>
+			<!-- ページ遷移版 -->
+			<!-- <a href="/show/<%= company.id %>">● <%= company.name %></a> -->
+
+			<!-- Modal表示版 -->
+			<a data-target="modal<%= company.id %>" class="modal-open">● <%= company.name %></a>
+		</td>
+
+		<!--Modal contents START-->
+		<div id="modal<%= company.id %>" class="modal-content">
+			<dt>
+				<h1><%= company.name %></h1>
+			</dt>
+			<dt>
+				<p>住所：<%= company.address %></p>
+			</dt>
+			<dt>
+				<p>TEL：<%= company.connum %></p>
+			</dt>
+			<dt>
+				<p>Mail：<a href="mailto:<%= company.mail %>"><%= company.mail %></a></p>
+			</dt>
+			<dt>
+				<p>URL：<a href="<%= company.site_url %>" target="_blank"><%= company.site_url %></a></p>
+			</dt>
+			<a class="modal-close" style="font-size: 20px">×</a>
+		</div>
+		<!--Modal contents END-->
+
+		<!--
+		<td>
+			<input class="deleteCmd" type="submit" value="削除">
+		</td>
+		-->
+	</tr>
+	<% end %>
+</table>
+</div>
+
+<div id="wait_msg">
+	<p align="center"><img src="/img/ajax-loader.gif" width="10%" height="10%"></p>
+</div>
+
+
+<script>
+	$('.delallCmd').click(function() {
+		var el = $(this).parent();
+		if (confirm("一覧情報をすべて削除してよろしいですか？")) {
+			$.post('/delete', {
+				id: el.data('id')
+			}, function(){
+				el.fadeOut(300);
+			});
+		}
+	})
+
+	$('.deleteCmd').click(function() {
+		var el = $(this).parent().parent();
+		if (confirm("この情報を削除してよろしいですか？")) {
+			$.post('/delete', {
+				id: el.data('id')
+			}, function(){
+				el.fadeOut(300);
+			});
+		}
+	})
+
+	<!--
+	function extraWait(){
+		document.getElementById('extra').style.display='none';
+		document.getElementById('extra2').style.display='none';
+		document.getElementById('extra3').style.display='none';
+		document.getElementById('wait_msg').style.display='block';
+	}
+	//-->
+</script>
