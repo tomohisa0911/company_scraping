@@ -1,11 +1,13 @@
 body {
 	background-color: #ffffff;
-	/*background-image: linear-gradient(#F5DA81,#F3E2A9,#F5ECCE,#ffffff);*/
 }
 
 a{
 	color:#2E64FE;
 	text-decoration:none;
+}
+a:visited{
+	color:#FF00FF;
 }
 
 a:hover{
@@ -27,27 +29,29 @@ table{
 
 /* modal */
 .modal-overlay {
-    z-index:2; /*デモではheader,footerをz-index:1にしたので それより上げています*/
-    display:none; /*jsでフェードインされるまでdisplay:none*/
+    z-index:2;
+    display:none;
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:100vh; /*100vhでビューポートの高さいっぱいになります*/
-    background-color:rgba(0,0,0,.5)} /*これは好きな色・透明度で*/
-a.modal-open:hover {cursor:pointer} /*カーソルをポインタに*/
+    height:100vh;
+    background-color:rgba(0,0,0,.5)}
+a.modal-open:hover {cursor:pointer}
 .modal-content {
     position:fixed;
-    display:none; /*jsでフェードインされるまでdisplay:none*/
-    z-index:3; /*オーバーレイより上に*/
+    display:none;
+    z-index:3;
     margin:10px;
     padding:15px;
-    border-radius:20px;
-    background:#fff}
+    border-radius:10px;
+    box-shadow:10px 10px rgba(0,0,0,0.3);
+    background:#fff
+}
 .modal-content img {width:auto;max-height:75vh}
 .modal-content h1 {font-size:120%; margin-bottom:0.5em}
 .modal-content p {max-width:565px; text-align:left}
-a.modal-close { /*クローズボタンは何でも好きなスタイルでOK*/
+a.modal-close {
     position:absolute;
     top:0;
     right:10px;
@@ -56,4 +60,4 @@ a.modal-close { /*クローズボタンは何でも好きなスタイルでOK*/
     line-height:1;
     font-weight:bold;
     text-decoration:none}
-a.modal-close:hover {cursor:pointer} /*カーソルをポインタに*/
+a.modal-close:hover {cursor:pointer}
