@@ -1,20 +1,24 @@
-<h1><a href="http://tenshoku.mynavi.jp/" target="_blank"><img src="/img/MyNavi2.gif" width="20%" height="20%"></a></h1>
+<div>
+	<a href="http://tenshoku.mynavi.jp/" target="_blank"><img class="img-responsive" src="/img/MyNavi2.gif" width="20%" height="20%"></a>
+</div>
 
 <div id="extra2" >
 	<ul>
-		<form method="post" action="/url_add">
-			<p>■URL　
-				<input name="url_add" type="text" size="70" placeholder="サイトURL">
-				<input type="submit" value="登録" >
-			</p>
+		<form class="form-inline" method="post" action="/url_add">
+			<div class="form-group">
+				<label for="url_add">URL</label>　
+				<input class="form-control" name="url_add" type="text" size="50" placeholder="サイトURL">
+				<input class="btn btn-primary btn-sm" type="submit" value="登録" >
+			</div>
 		</form>
 	</ul>
 	<ul>
-		<form id="extra" method="post" action="/designation">
-			<p>■登録中URL　
-				<a href="<%= @urllists %>" target="_blank"><%= @urllists %></a>
-				<input type="submit" value="抽出" onclick="extraWait()">
-			</p>
+		<form class="form-inline" id="extra" method="post" action="/designation">
+			<div class="form-group">
+				<label>登録URL</label>
+				<p class="form-control-static"> <a  href="<%= @urllists %>" target="_blank"><%= @urllists %></a></p>
+				<input class="btn btn-primary btn-sm" type="submit" value="抽出" onclick="extraWait()">
+			</div>
 		</form>
 	</ul>
 </div>
@@ -22,7 +26,7 @@
 
 <div id="extra3">
 <p style="font-size: 18px; margin-left: 20px">【企業一覧】</p>
-<table>
+<table class="table table-striped table-condensed">
 	<% @companies.each do |company| %>
 	<tr data-id="<%= company.id %>">
 		<td>
